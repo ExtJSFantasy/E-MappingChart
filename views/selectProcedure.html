@@ -1,161 +1,139 @@
 <!doctype html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="../css/mui.min.css" rel="stylesheet" />
-		<style type="text/css">
-			body,
-			html {
-				height: 100%;
-				font-family: Microsoft YaHei;
-			}
-			
-			.md-header-title-display {
-				display: flex;
-				padding-right: 0px;
-			}
-			
-			.md-header-flex-one {
-				flex: 1;
-			}
-			
-			.md-header-flex-two {
-				flex: 3;
-			}
-			
-			.label-input-arrow {
-				background: url(../img/arrow.png) right center no-repeat !important;
-			}
-			
-			.md-input-height {
-				height: 44px !important;
-				margin-bottom: 0px !important;
-			}
-			
-			.md-op-user {
-				font-weight: 600;
-			}
-			
-			.md-op-size {
-				font-size: 2vh;
-				font-weight: 600;
-			}
-			
-			.md-changeover {
-				margin: .2vh 1.2vh .2vh 1.2vh;
-				background-color: red;
-				box-shadow: 0px 0px 10px 5px rgba(255, 0, 0, 0.5);
-				color: white;
-				font-weight: 600;
-			}
-			
-			.md-input-border {
-				/*border: solid red 1px;*/
-			}
-		</style>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<style type="text/css">
+		body,
+		html {
+			height: 100%;
+			font-family: Microsoft YaHei;
+		}
 
-	<body>
-		<div class="mui-content" id='procedure'>
-			<header class="mui-bar mui-bar-nav md-header-title-display">
-				<div class="mui-input-row mui-checkbox mui-left md-header-flex-one">
-					<label>自动调用</label>
-					<input @click='checkedOne()' :checked="isChecked" name="checkbox1" value="Item 1" type="checkbox">
-				</div>
-				<input class="md-header-flex-two label-input-arrow md-input-height" type="text" :readonly="isCall" :placeholder="pHolder">
-				<button class="md-header-flex-one md-changeover" class="mui-btn" @click="onClickOver">ChangeOver</button>
-				<div class="mui-ellipsis md-header-flex-one md-input-border">
-					<div class="mui-input-row">
-						<label class="label-end md-op-user">Op:</label>
-						<input class="label-input-gray md-op-size" readonly type="text" value="0008755425">
-					</div>
-				</div>
-			</header>
-			<div class="mui-content">
-				<div class="mui-input-row mui-search">
-					<input type="search" class="mui-input-clear" placeholder="">
-				</div>
-				<div class="mui-scroll-wrapper">
-					<div class="mui-scroll">
-						<ul class="mui-table-view mui-grid-view">
-							<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
-								<div class="mui-card">
-									<div class="mui-card-media">SGM258</div>
-									<div class="mui-card-media">SGM258程序</div>
-								</div>
-							</li>
-							<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
-								<div class="mui-card">
-									<div class="mui-card-media">SGM258</div>
-									<div class="mui-card-media">SGM258程序</div>
-								</div>
-							</li>
-							<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
-								<div class="mui-card">
-									<div class="mui-card-media">SGM258</div>
-									<div class="mui-card-media">SGM258程序</div>
-								</div>
-							</li>
-							<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
-								<div class="mui-card">
-									<div class="mui-card-media">SGM258</div>
-									<div class="mui-card-media">SGM258程序</div>
-								</div>
-							</li>
-							<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
-								<div class="mui-card">
-									<div class="mui-card-media">SGM258</div>
-									<div class="mui-card-media">SGM258程序</div>
-								</div>
-							</li>
-							<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
-								<div class="mui-card">
-									<div class="mui-card-media">SGM258</div>
-									<div class="mui-card-media">SGM258程序</div>
-								</div>
-							</li>
-							<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
-								<div class="mui-card">
-									<div class="mui-card-media">SGM258</div>
-									<div class="mui-card-media">SGM258程序</div>
-								</div>
-							</li>
-						</ul>
-					</div>
+		.mui-bar {
+			position: fixed;
+			z-index: 100;
+			right: 0;
+			left: 0;
+			height: 44px;
+			padding-right: 10px;
+			padding-left: 10px;
+			border-bottom: 0;
+			background-color: #f7f7f7;
+			-webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+			box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+		}
+
+		.mui-bar-nav~.mui-content {
+			padding-top: 60px;
+		}
+
+		.md-header-title-display {
+			display: flex;
+			padding-right: 0px;
+		}
+
+		.md-header-flex-one {
+			flex: 1;
+		}
+
+		.md-header-flex-two {
+			flex: 3;
+		}
+
+		.label-input-arrow {
+			background: url(../img/arrow.png) right center no-repeat !important;
+		}
+
+		.md-input-height {
+			height: 44px !important;
+			margin-bottom: 0px !important;
+		}
+
+		.md-op-user {
+			font-weight: 600;
+		}
+
+		.md-op-size {
+			font-size: 2vh;
+			font-weight: 600;
+		}
+
+		.md-changeover {
+			margin: .2vh 1.2vh .2vh 1.2vh;
+			background-color: red;
+			box-shadow: 0px 0px 10px 5px rgba(255, 0, 0, 0.5);
+			color: white;
+			font-weight: 600;
+		}
+
+		.md-input-border {
+			/*border: solid red 1px;*/
+		}
+
+		.md-card-display {
+			display: flex;
+		}
+
+		.md-card-flex {
+			flex: 1;
+		}
+
+		.md-card-height {
+			height: 5vh;
+			line-height: 5vh;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="mui-content" id='procedure'>
+		<header class="mui-bar mui-bar-nav md-header-title-display">
+			<div class="mui-input-row mui-checkbox mui-left md-header-flex-one">
+				<label>自动调用</label>
+				<input @click='checkedOne()' :checked="isChecked" name="checkbox1" value="Item 1" type="checkbox">
+			</div>
+			<input class="md-header-flex-two label-input-arrow md-input-height" id='ppNum' type="text" :readonly="isCall" :placeholder="pHolder">
+			<button class="md-header-flex-one md-changeover" class="mui-btn" @click="onClickOver">ChangeOver</button>
+			<div class="mui-ellipsis md-header-flex-one md-input-border">
+				<div class="mui-input-row">
+					<label class="label-end md-op-user">Op:</label>
+					<input class="label-input-gray md-op-size" readonly type="text" value="0008755425">
 				</div>
 			</div>
+		</header>
+		<div class="mui-content" v-show="isCall">
+			<div class="mui-input-row mui-search">
+				<input type="search" class="mui-input-clear" placeholder="">
+			</div>
+			<!-- <div class="mui-content">
+			<div class="mui-scroll-wrapper mui-content">
+				<div class="mui-scroll"> -->
+			<ul class="mui-table-view mui-grid-view">
+				<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4" v-for="(serialNumber,index) in serialNumbers" @click="onClickSelectItem(serialNumber,index)">
+					<div class="mui-card md-card-height">
+						<div class="mui-card-content md-card-display">
+							<span class="md-card-flex" v-text="serialNumber.serverReturn"></span>
+							<span class="md-card-flex" v-text="serialNumber.procedure"></div>
+					</div>
+				</li>
+			</ul>
+			<!-- </div>
+			</div>
+		</div> -->
 		</div>
-		<script src="../js/mui.min.js"></script>
-		<script type="text/javascript" src="../js/vue.min.js"></script>
-		<script type="text/javascript">
-			mui.init()
-			new Vue({
-				el: '#procedure',
-				data: {
-					isCall: true,
-					isChecked: false,
-					pHolder: '请选择产品序列号'
-				},
-				mounted: function() {},
-				methods: {
-					checkedOne() {
-						this.isCall = !this.isCall
-						this.isChecked = !this.isChecked
-						if(this.isChecked) {
-							this.pHolder = '扫描产品序列号'
-						} else {
-							this.pHolder = '请选择产品序列号'
-						}
-					},
-					onClickOver() {
-						console.log(1122);
-					}
-				}
-			})
-		</script>
-	</body>
+	</div>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+	<script type="text/javascript">
+		mui.init()
+	</script>
+	<script type="text/javascript" src="../js/controllers/procedure.js"></script>
+</body>
 
 </html>

@@ -1,93 +1,28 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-		<link href="css/mui.min.css" rel="stylesheet" />
-		<style type="text/css">
-			html {
-				height: 100%;
-			}
-			
-			body {
-				background: url(img/web_login_bg.jpg) no-repeat center;
-				background-size: cover;
-			}
-			
-			.mui-content {
-				background-color: transparent;
-				-webkit-overflow-scrolling: touch;
-			}
-			
-			.md-index-title {
-				height: 20%;
-				margin: 5% 0 auto auto;
-				font-family: Microsoft YaHei;
-				font-size: 6vh;
-				font-weight: 600;
-			}
-			
-			.md-index-img {
-				display: inline-block;
-				margin: 0 auto;
-				vertical-align: middle;
-			}
-			
-			.md-index-img-out {
-				width: 100%;
-				height: 100%;
-				line-height: 600px;
-				text-align: center;
-			}
-			.md-index-input{
-				opacity: 0;
-			}
-		</style>
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link href="css/mui.min.css" rel="stylesheet" />
+	<link href="css/index.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+</head>
 
-	<body>
-		<div class="mui-content" id="index">
-			<div class="mui-title md-index-title">E-MappingChart</div>
-			<div class="md-index-img-out"><img class="md-index-img" src="img/timg.jpg" /></div>
-			<input class="md-index-input" v-model="inputV" id='input' autofocus @keydown.enter="inputNew" />
+<body>
+	<div class="mui-content" id="index">
+		<div class="mui-title md-index-title">E-MappingChart</div>
+		<div class="md-index-img-out">
+			<img class="md-index-img" src="img/timg.jpg" />
 		</div>
-		<script src="js/mui.min.js"></script>
-		<script src="js/vue.min.js"></script>
-		<script type="text/javascript">
-			new Vue({
-				el: '#index',
-				data: {
-					inputV: ''
-				},
-				watch: {
-					/*inputV: {
-						handler: function(now, old) {
-						},
-						deep: true //对象内部的属性监听，也叫深度监听  
-					}*/
-				},
-				mounted: function() {
-					mui.init()
-					setTimeout(function() {
-						mui('#input')[0].focus();
-					}, 0);
-					document.addEventListener('click', function() {
-						setTimeout(function() {
-							mui('#input')[0].focus();
-						}, 0);
-					})
-				},
-				methods: {
-					inputNew: function() {
-						mui.openWindow({
-							url: 'views/selectProcedure.html',
-							id: 'views/selectProcedure'
-						})
-					}
-				}
-			})
-		</script>
-	</body>
+		<input class="md-index-input" v-model="inputV" id='input' autofocus @keydown.enter="inputNew" />
+		<span class="icon-keyboard md-keybord"></span>
+		<div id="triangle-bottomright">	
+		</div>
+	</div>
+	<script src="js/mui.min.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/controllers/index.js"></script>
+</body>
 
 </html>

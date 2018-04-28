@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="../css/mui.min.css" rel="stylesheet" />
+    <style type="text/css">
+        body,
+        html {
+            height: 100%;
+            font-family: Microsoft YaHei;
+        }
+
+        .mui-content {
+            height: 100%;
+        }
+
+        .mui-bar {
+            position: fixed;
+            z-index: 100;
+            right: 0;
+            left: 0;
+            height: 44px;
+            padding-right: 10px;
+            padding-left: 10px;
+            border-bottom: 0;
+            background-color: #f7f7f7;
+            -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+            box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .mui-bar-nav~.mui-content {
+            padding-top: 60px;
+        }
+
+        .mui-bar .mui-title {
+            right: 135px;
+            left: 135px;
+            display: inline-block;
+            overflow: hidden;
+            width: auto;
+            margin: 0;
+            text-overflow: ellipsis;
+        }
+
+        /* .mui-bar-nav~.mui-content {
+			padding-top: 60px;
+		} */
+
+        .mui-table-view:before {
+            position: absolute;
+            right: 0;
+            left: 0;
+            height: 1px;
+            content: '';
+            -webkit-transform: scaleY(.5);
+            transform: scaleY(.5);
+            background-color: transparent;
+            top: -1px;
+        }
+
+        .mui-table-view:after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            content: '';
+            -webkit-transform: scaleY(.5);
+            transform: scaleY(.5);
+            background-color: transparent;
+        }
+
+        .md-header-title-display {
+            display: flex;
+            padding-right: 0px;
+        }
+
+        .md-header-flex-one {
+            flex: 1;
+        }
+
+        .md-header-flex-two {
+            flex: 3;
+        }
+
+        .label-input-arrow {
+            background: url(../img/arrow.png) right center no-repeat !important;
+        }
+
+        .md-input-height {
+            height: 44px !important;
+            margin-bottom: 0px !important;
+        }
+
+        .md-op-user {
+            font-weight: 600;
+        }
+
+        .md-op-size {
+            font-size: 2vh;
+            font-weight: 600;
+        }
+
+        .md-changeover {
+            height: 50px;
+            margin: 0.7vh 1.2vh .2vh 1.2vh;
+            background-color: red;
+            box-shadow: 0px 0px 10px 5px rgba(255, 0, 0, 0.5);
+            color: white;
+            font-weight: 600;
+        }
+
+        .md-input-border {
+            /*border: solid red 1px;*/
+        }
+
+        .md-card-display {
+            display: flex;
+        }
+
+        .md-card-flex {
+            flex: 1;
+        }
+
+        .md-card-height {
+            height: 5vh;
+        }
+
+        .md-title-procedure {
+            line-height: 40px;
+        }
+
+        .md-title-procedure-name {
+            font-size: 2vh;
+            font-weight: 600;
+        }
+
+        .label-input-gray {
+            border: solid 1px !important;
+            background: #efeff4 !important;
+            border-color: #999 !important;
+            padding-left: 1rem !important;
+            color: gray;
+        }
+
+        .md-right-title {
+            font-size: 2vh;
+            font-weight: 600;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mui-content" id='procedure'>
+        <header class="mui-bar mui-bar-nav" style="    height: 60px;">
+
+            <!-- <a class=" mui-pull-left">
+                <div class="mui-ellipsis md-input-border">
+                    <div class="mui-input-row">
+                        <label class="label-end md-op-user">Op:</label>
+                        <input class="label-input-gray md-op-size" readonly type="text" value="0008755425">
+                    </div>
+                </div>
+            </a> -->
+            <div class="mui-pull-left" style="font-size: 3vh;line-height: 7vh;">Op：<span style="font-weight: 600;">0008755425</span></div>
+            <h1 class="mui-title" id="title" style="font-size: 3vh;font-weight: 600;line-height: 7vh;">SGM-ICS-DISPLAY</h1>
+            <button class="md-changeover mui-pull-right" class="mui-btn" @click="onClickOver">ChangeOver</button>
+        </header>
+        <div class="mui-content">
+            <div style="display: flex;height: 100%;">
+                <div style="flex: 1;">
+                    <div style="height: 90%;margin: 1vh;">
+                        <img style="height: 45%;width: 100%;" src="../img/two.png" />
+                        <img style="height: 45%;width: 100%;" src="../img/one.png" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>扫描产品序列号：</label>
+                        <input type="text" id="pProcedure" :readonly="isChecked" class="label-input-gray mui-input-clear" :placeholder="pHolder"
+                            v-model="ppValue">
+                    </div>
+                </div>
+                <div style="flex: 1;">
+                    <div style="height: 90%;margin: 2vh 1vh 1vh 1vh;">
+                        <p class="md-right-title">Step1.取产品，按图示方向检查外观有无缺陷以及表面质量</p>
+                        <div style="display: flex;">
+                            <div style="flex: 1;">
+                                <img style="height: 100%;width: 100%;" src='../img/two.png'>
+                            </div>
+                            <div style="flex: 1;">
+                                <ul class="mui-table-view mui-grid-view" style="    height: 100%;">
+                                    <li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4" v-for="(step,index) in steps" @click="onClickSelectItem(step,index)">
+                                        <div class="mui-card md-card-height">
+                                            <div class="mui-card-content md-card-display" style="display: grid;">
+                                                <span class="md-card-flex" v-text="step.name"></span>
+                                                <span class="md-card-flex" v-text="step.pic">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+    <script type="text/javascript">
+        mui.init()
+    </script>
+    <script type="text/javascript" src="../js/controllers/main.js"></script>
+</body>
+
+</html>
