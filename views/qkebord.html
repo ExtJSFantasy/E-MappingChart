@@ -1,0 +1,581 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="../css/mui.min.css" rel="stylesheet" />
+    <link href="../css/animate.css" rel="stylesheet" />
+    <style>
+        .mui-table-view.mui-grid-view .mui-table-view-cell {
+            font-size: 17px;
+            display: inline-block;
+            margin-right: -4px;
+            padding: 4px 0 0 0px;
+            text-align: center;
+            vertical-align: middle;
+            background: 0 0;
+        }
+
+        .mui-table-view.mui-grid-view .mui-table-view-cell:last-child {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mui-content" id='procedure'>
+        <!-- <div class="mui-content">
+            <ul class="mui-table-view mui-grid-view">
+                <li class="mui-table-view-cell mui-col-xs-2 mui-col-sm-2" v-for="(serialNumber,index) in serialNumbers" @click="onClickSelectItem(serialNumber,index)">
+                    <div class="mui-card md-card-height" style="height: 30px;line-height: 30px;position: relative;">
+                        <div class="mui-card-content md-card-display">
+                            <span class="md-card-flex" style="font-size: 21px !important;" v-text="serialNumber.id"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <input v-model='num'>
+        </div> -->
+        <div class="mui-content">
+            <div style="display: flex">
+                <div style="flex: 1">
+                    <ul class="mui-table-view mui-grid-view">
+                        <li class="mui-table-view-cell mui-col-xs-3 mui-col-sm-2" :class="data.noWclass" v-for="(data,index) in data2" @click="onClickSelectItemFiger(data,index)">
+                            <div class="mui-card md-card-height" style="height: 30px;line-height: 30px;position: relative;">
+                                <div class="mui-card-content md-card-display">
+                                    <span class="md-card-flex" style="font-size: 21px !important;" v-text="data.id"></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div style="flex: 1">
+                    <ul class="mui-table-view mui-grid-view">
+                        <li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4" :class="data.noWclass" v-for="(data,index) in data1" @click="onClickSelectItemNum(data,index)">
+                            <div class="mui-card md-card-height" style="height: 30px;line-height: 30px;position: relative;">
+                                <div class="mui-card-content md-card-display">
+                                    <span class="md-card-flex" style="font-size: 21px !important;" v-text="data.id"></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <input v-model='num'>
+        </div>
+    </div>
+    <script src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+    <script type="text/javascript">
+        mui.init();
+        new Vue({
+            el: '#procedure',
+            data: {
+                isCall: true,
+                isChecked: false,
+                isShow: false,
+                pHolder: '请选择程序',
+                data1: [{
+                        id: 1,
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 2,
+                        noWclass: 'classTwo',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 3,
+                        noWclass: 'classThree',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 4,
+                        noWclass: 'classFour',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 5,
+                        noWclass: 'classFive',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 6,
+                        noWclass: 'classSix',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 7,
+                        noWclass: 'classSeven',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 8,
+                        noWclass: 'classEight',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 9,
+                        noWclass: 'classNine',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: '清空',
+                        noWclass: 'clearx',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 0,
+                        noWclass: 'classZero',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: '删除',
+                        noWclass: 'delete',
+                        procedure: 'SGM258 程序'
+                    }
+                ],
+                data2: [{
+                        id: 'Q',
+                        noWclass: 'classQ',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'W',
+                        noWclass: 'classW',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'E',
+                        noWclass: 'classe',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'R',
+                        noWclass: 'classR',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'T',
+                        noWclass: 'classT',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'Y',
+                        noWclass: 'classY',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'U',
+                        noWclass: 'classU',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'I',
+                        noWclass: 'classI',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'O',
+                        noWclass: 'classO',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'P',
+                        noWclass: 'classP',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'A',
+                        noWclass: 'classA',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'S',
+                        noWclass: 'classS',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'D',
+                        noWclass: 'classD',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'F',
+                        noWclass: 'classF',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'G',
+                        noWclass: 'classG',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'H',
+                        noWclass: 'classH',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'J',
+                        noWclass: 'classJ',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'K',
+                        noWclass: 'classK',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'L',
+                        noWclass: 'classL',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'Z',
+                        noWclass: 'classZ',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'X',
+                        noWclass: 'classX',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'C',
+                        noWclass: 'classC',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'V',
+                        noWclass: 'classV',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'B',
+                        noWclass: 'classB',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'N',
+                        noWclass: 'classN',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'M',
+                        noWclass: 'classM',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: '切换',
+                        noWclass: 'change',
+                        procedure: 'SGM258 程序'
+                    }
+                ],
+                serialNumbers: [{
+                        id: 1,
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 2,
+                        noWclass: 'classTwo',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 3,
+                        noWclass: 'classThree',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 4,
+                        noWclass: 'classFour',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 5,
+                        noWclass: 'classFive',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 6,
+                        noWclass: 'classSix',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 7,
+                        noWclass: 'classSeven',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 8,
+                        noWclass: 'classEight',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 9,
+                        noWclass: 'classNine',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 0,
+                        noWclass: 'classZero',
+                        procedure: 'SGM258 程序'
+                    }, {
+                        id: '',
+                        noWclass: '',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: '',
+                        noWclass: '',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'Q',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'W',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'E',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'R',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'T',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'Y',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'U',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'I',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'O',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'P',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'A',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'S',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'D',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'F',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'G',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'H',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'J',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'K',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'L',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'Z',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'X',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'C',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'V',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'B',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'N',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: 'M',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: '切换',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: '清空',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    },
+                    {
+                        id: '删除',
+                        noWclass: 'classOne',
+                        procedure: 'SGM258 程序'
+                    }
+                ],
+                isSwitch: false,
+                num: ''
+            },
+            mounted: function () {},
+            methods: {
+                checkedOne() {
+                    this.isCall = !this.isCall
+                    this.isChecked = !this.isChecked
+                    if (this.isChecked) {
+                        this.pHolder = '请扫描产品序列号';
+                        setTimeout(function () {
+                            mui('#ppNum')[0].focus();
+                        }, 0);
+                    } else {
+                        this.pHolder = '请选择程序'
+                    }
+                },
+                onClickOver() {
+                    mui.back();
+                    console.log(1122);
+                },
+                onClickSelectItem(item) {
+                    if (item.id === '切换') {
+                        console.log(this.serialNumbers[10].id == 'Q');
+                        if (this.serialNumbers[10].id == 'Q') {
+                            this.toLocaleLowerCase(this.serialNumbers);
+                        } else {
+                            this.toLocaleUpperCase(this.serialNumbers);
+                        }
+                    } else if (item.id == '删除') {
+                        this.num = this.num.substring(0, this.num.length - 1);
+                    } else if (item.id == '清空') {
+                        this.num = ''
+                    } else {
+                        //this.animate('.'+index, "pulse", 2, 10);
+                        this.num = this.num + '' + item.id;
+                    }
+                },
+                onClickSelectItemFiger(item) {
+                    this.animate('.' + item.noWclass, "pulse", 2, 10);
+                    if (item.id === '切换') {
+                        console.log(this.data2[0].id);
+                        if (this.data2[0].id == 'Q') {
+                            this.toLocaleLowerCase(this.data2);
+                        } else {
+                            this.toLocaleUpperCase(this.data2);
+                        }
+                    } else {
+                        //this.animate('.'+index, "pulse", 2, 10);
+                        this.num = this.num + '' + item.id;
+                    }
+                },
+                onClickSelectItemNum(item) {
+                    this.animate('.' + item.noWclass, "pulse", 2, 10);
+                    if (item.id == '删除') {
+                        this.num = this.num.substring(0, this.num.length - 1);
+                    } else if (item.id == '清空') {
+                        this.num = ''
+                    } else {
+                        this.num = this.num + '' + item.id;
+                    }
+                },
+                toLocaleLowerCase(arr) {
+                    this.isSwitch = !this.isSwitch;
+                    arr.forEach(function (item, index) {
+                        item.id = (item.id + '').toLocaleLowerCase()
+                    })
+                    return arr
+                },
+                toLocaleUpperCase(arr) {
+                    this.isSwitch = !this.isSwitch;
+                    arr.forEach(function (item, index) {
+                        item.id = (item.id + '').toLocaleUpperCase()
+                    })
+                    return arr
+                },
+                animate(seletor, animation_name, count, delay) {
+                    var target = document.querySelectorAll(seletor)
+                    var timer = null;
+                    timer = setInterval(function () {
+                        target.forEach(function (x) {
+                            x.className += " animated " + animation_name;
+                            x.addEventListener("animationend", function () {
+                                x.className = x.className.replace(" animated " +
+                                    animation_name, "");
+                            });
+                        })
+                        count--;
+                        if (count <= 0) {
+                            clearInterval(timer);
+                        }
+                    }, delay)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

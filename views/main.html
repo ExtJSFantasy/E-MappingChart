@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>E-MappingChart</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <link href="../css/mui.min.css" rel="stylesheet" />
     <style type="text/css">
@@ -153,31 +153,63 @@
             font-weight: 600;
             color: black;
         }
+
+        .md-title-heifht {
+            height: 60px;
+        }
+
+        .md-title-op {
+            font-size: 3vh;
+            line-height: 7vh;
+        }
+
+        .md-title-op-content {
+            font-weight: 600;
+        }
+
+        .md-content {
+            display: flex;
+            height: 100%;
+        }
+        .md-flex{
+            flex: 1;
+        }
+        .md-img-height{
+            height: 90%;
+        }
+        .md-img-margin{
+            margin: 1vh;
+        }
+        .md-img-size{
+            height: 45%;width: 100%;
+        }
+        .md-right-margin{
+            margin: 2vh 1vh 1vh 1vh;
+        }
+        .md-right-img{
+            height: 100%;width: 100%;
+        }
+        .md-right-steps{
+            height: 100%;
+        }
     </style>
 </head>
 
 <body>
     <div class="mui-content" id='procedure'>
-        <header class="mui-bar mui-bar-nav" style="    height: 60px;">
-
-            <!-- <a class=" mui-pull-left">
-                <div class="mui-ellipsis md-input-border">
-                    <div class="mui-input-row">
-                        <label class="label-end md-op-user">Op:</label>
-                        <input class="label-input-gray md-op-size" readonly type="text" value="0008755425">
-                    </div>
-                </div>
-            </a> -->
-            <div class="mui-pull-left" style="font-size: 3vh;line-height: 7vh;">Op：<span style="font-weight: 600;">0008755425</span></div>
-            <h1 class="mui-title" id="title" style="font-size: 3vh;font-weight: 600;line-height: 7vh;">SGM-ICS-DISPLAY</h1>
+        <header class="mui-bar mui-bar-nav md-title-heifht">
+            <div class="mui-pull-left md-title-op">Op：
+                <span class="md-title-op-content">0008755425</span>
+            </div>
+            <h1 class="mui-title md-title-op md-title-op-content" id="title">SGM-ICS-DISPLAY</h1>
             <button class="md-changeover mui-pull-right" class="mui-btn" @click="onClickOver">ChangeOver</button>
         </header>
         <div class="mui-content">
-            <div style="display: flex;height: 100%;">
-                <div style="flex: 1;">
-                    <div style="height: 90%;margin: 1vh;">
-                        <img style="height: 45%;width: 100%;" src="../img/two.png" />
-                        <img style="height: 45%;width: 100%;" src="../img/one.png" />
+            <div class="md-content">
+                <div class="md-flex">
+                    <div class="md-img-height md-img-margin">
+                        <img class="md-img-size" src="../img/two.png" />
+                        <img class="md-img-size" src="../img/one.png" />
                     </div>
                     <div class="mui-input-row">
                         <label>扫描产品序列号：</label>
@@ -185,15 +217,15 @@
                             v-model="ppValue">
                     </div>
                 </div>
-                <div style="flex: 1;">
-                    <div style="height: 90%;margin: 2vh 1vh 1vh 1vh;">
+                <div class="md-flex">
+                    <div class="md-img-height md-right-margin">
                         <p class="md-right-title">Step1.取产品，按图示方向检查外观有无缺陷以及表面质量</p>
                         <div style="display: flex;">
-                            <div style="flex: 1;">
-                                <img style="height: 100%;width: 100%;" src='../img/two.png'>
+                            <div class="md-flex">
+                                <img class="md-right-img" src='../img/two.png'>
                             </div>
-                            <div style="flex: 1;">
-                                <ul class="mui-table-view mui-grid-view" style="    height: 100%;">
+                            <div class="md-flex">
+                                <ul class="mui-table-view mui-grid-view md-right-steps">
                                     <li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4" v-for="(step,index) in steps" @click="onClickSelectItem(step,index)">
                                         <div class="mui-card md-card-height">
                                             <div class="mui-card-content md-card-display" style="display: grid;">

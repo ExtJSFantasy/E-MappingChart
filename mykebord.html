@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link href="css/mui.min.css" rel="stylesheet"> -->
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            width: 96px;
+        }
+    </style>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <link href="css/animate.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="main">
+        <table border="1" style="width: 240px;text-align: center;">
+            <tr>
+                <th @click="onClickItem(1,'one')" class="one">1</th>
+                <th @click="onClickItem(2,'two')" class="two">2</th>
+                <td @click="onClickItem(3,'three')" class="three">3</td>
+            </tr>
+            <tr>
+                <td @click="onClickItem(4,'four')" class="four">4</td>
+                <td @click="onClickItem(5,'five')" class="five">5</td>
+                <td @click="onClickItem(6,'six')" class="six">6</td>
+            </tr>
+            <tr>
+                <td @click="onClickItem(7,'seven')" class="seven">7</td>
+                <td @click="onClickItem(8,'eight')" class="eight">8</td>
+                <td @click="onClickItem(9,'nine')" class="nine">9</td>
+            </tr>
+            <tr>
+                <td @click="onClickItem(11,'ele')" class="ele">清空</td>
+                <td @click="onClickItem(0,'zero')" class="zero">0</td>
+                <td @click="onClickItem(12,'twl')" class="twl">删除</td>
+            </tr>
+        </table>
+        <input v-model='num'>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#main',
+            data: {
+                aClass: '',
+                isClass: false,
+                num:''
+            },
+            watch: {
+                isClass: {
+                    handler: function (now, old) {
+                        //this.isClass = !now
+                    }
+                }
+            },
+            methods: {
+                onClickItem(item,index) {
+                    this.animate('.'+index, "pulse", 2, 10);
+                    
+                    if(item === 11){
+                        this.num = ''
+                    }else if(item === 12){
+                        console.log(this.num.length);
+                        this.num = this.num.substring(0,this.num.length-1);
+                    }else{
+                        this.num = this.num+''+item;
+                    }
+                    console.log(item);
+                },
+                animate(seletor, animation_name, count, delay) {
+                    var target = document.querySelectorAll(seletor)
+                    var timer = null;
+                    timer = setInterval(function () {
+                        target.forEach(function (x) {
+                            x.className += " animated " + animation_name;
+                            x.addEventListener("animationend", function () {
+                                x.className = x.className.replace(" animated " +
+                                    animation_name, "");
+                            });
+                        })
+                        count--;
+                        if (count <= 0) {
+                            clearInterval(timer);
+                        }
+                    }, delay)
+                }
+                //使用示例
+                
+            }
+        })
+    </script>
+</body>
+
+</html>
